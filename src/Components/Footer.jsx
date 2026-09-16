@@ -1,126 +1,114 @@
-import { NavLink } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
 export const Footer = () => {
-  const getLinkClass = ({ isActive }) =>
-    isActive
-      ? "text-amber-400 font-semibold transition-colors"
-      : "hover:text-amber-400 transition-colors";
+    return (
+        <footer className="bg-[#232b3e] text-gray-300 border-t border-gray-800/50 pt-12 pb-8">
+            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                {/* Brand Section */}
+                <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                        <div className="w-15 h-15 rounded-xl bg-gray-800/80 border border-gray-700/60 flex items-center justify-center p-1.5 shadow-sm">
+                            <img
+                                src="/images/image.png"
+                                alt="Brand Logo"
+                                onError={(e) => {
+                                    e.currentTarget.style.display = "none";
+                                }}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                        <span className="text-xl font-extrabold text-white tracking-tight">
+                            DKT's Store
+                        </span>
+                    </div>
+                    <p className="text-sm text-gray-400 leading-relaxed">
+                        Your destination for premium products, affordable, and fast local service.
+                    </p>
+                </div>
 
-  return (
-    <footer className="w-full bg-slate-600 text-slate-300 border-t border-slate-700 mt-auto">
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-        
-        {/* Brand Info */}
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-3">
-            <div className="h-20 w-20 overflow-hidden rounded-lg bg-slate-700 flex items-center justify-center">
-              <img 
-                src="/images/image.png" 
-                alt="Brand Logo" 
-                className="w-full h-full object-contain"
-              />
+                {/* Quick Links */}
+                <div>
+                    <h4 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">
+                        Quick Links
+                    </h4>
+                    <ul className="space-y-2 text-sm">
+                        <li>
+                            <Link to="/" className="hover:text-[#FFA500] transition-colors">
+                                Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/about" className="hover:text-[#FFA500] transition-colors">
+                                About Us
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/product" className="hover:text-[#FFA500] transition-colors">
+                                Products
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/contact" className="hover:text-[#FFA500] transition-colors">
+                                Contact
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+
+                {/* Categories */}
+                <div>
+                    <h4 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">
+                        Product Categories
+                    </h4>
+                    <ul className="space-y-2 text-sm text-gray-400">
+                        <Link to="/product">
+                            <li className="hover:text-white cursor-pointer transition-colors">Electronics</li>
+                            <li className="hover:text-white cursor-pointer transition-colors">Accessories</li>
+                            <li className="hover:text-white cursor-pointer transition-colors">Wearables</li>
+                            <li className="hover:text-white cursor-pointer transition-colors">Furniture</li>
+                            <li className="hover:text-white cursor-pointer transition-colors">Clothing</li>
+                            <li className="hover:text-white cursor-pointer transition-colors">Other</li>
+                        </Link>
+                    </ul>
+                </div>
+
+                {/* Account & Action */}
+                <div>
+                    <h4 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">
+                        Get Started
+                    </h4>
+                    <p className="text-sm text-gray-400 mb-4">
+                        Join DKT's Store today to place orders faster and earn rewards.
+                    </p>
+                    <div className="flex gap-2">
+                        <Link
+                            to="/login"
+                            className="px-4 py-2 text-xs font-semibold rounded-lg border border-gray-600 text-white hover:bg-gray-800 transition-colors"
+                        >
+                            Login
+                        </Link>
+                        <Link
+                            to="/signup"
+                            className="px-4 py-2 text-xs font-semibold rounded-lg bg-[#FFA500] hover:bg-[#e69500] text-gray-950 transition-colors shadow-sm"
+                        >
+                            Sign Up
+                        </Link>
+                    </div>
+                </div>
             </div>
-            <span className="text-2xl font-bold tracking-tight text-white">
-              DKT's Store
-            </span>
-          </div>
-          <p className="text-sm text-slate-400 leading-relaxed">
-            Your trusted destination for quality products. Dedicated to offering the best shopping experience.
-          </p>
-        </div>
 
-        {/* Navigation Links */}
-        <div className="flex flex-col gap-3">
-          <h3 className="text-white font-semibold text-base">Quick Links</h3>
-          <ul className="flex flex-col gap-2 text-sm">
-            <li>
-              <NavLink to="/" className={getLinkClass}>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/about" className={getLinkClass}>
-                About Us
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/product" className={getLinkClass}>
-                Products
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/contact" className={getLinkClass}>
-                Contact Us
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-
-        {/* Customer Care */}
-        <div className="flex flex-col gap-3">
-          <h3 className="text-white font-semibold text-base">Customer Care</h3>
-          <ul className="flex flex-col gap-2 text-sm">
-            <li>
-              <a href="#faq" className="hover:text-amber-400 transition-colors">
-                FAQ & Help
-              </a>
-            </li>
-            <li>
-              <a href="#shipping" className="hover:text-amber-400 transition-colors">
-                Shipping & Returns
-              </a>
-            </li>
-            <li>
-              <a href="#privacy" className="hover:text-amber-400 transition-colors">
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a href="#terms" className="hover:text-amber-400 transition-colors">
-                Terms of Service
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Newsletter Signup */}
-        <div className="flex flex-col gap-3">
-          <h3 className="text-white font-semibold text-base">Newsletter</h3>
-          <p className="text-sm text-slate-400">
-            Subscribe to get updates on special offers and new items.
-          </p>
-          <form 
-            onSubmit={(e) => e.preventDefault()} 
-            className="flex flex-col sm:flex-row gap-2 mt-1"
-          >
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="bg-slate-700 text-white placeholder-slate-400 px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 border border-slate-600 flex-1"
-            />
-            <button 
-              type="submit"
-              className="bg-amber-500 hover:bg-amber-400 text-slate-950 px-4 py-2 rounded-lg font-semibold text-sm transition-colors cursor-pointer shrink-0"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
-
-      </div>
-
-      {/* Copyright Bar */}
-      <div className="border-t border-slate-700/60 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2">
-          <p>© {new Date().getFullYear()} DKT's Store. All rights reserved.</p>
-          <div className="flex gap-4">
-            <a href="#privacy" className="hover:text-amber-400 transition-colors">Privacy</a>
-            <a href="#terms" className="hover:text-amber-400 transition-colors">Terms</a>
-            <a href="#cookies" className="hover:text-amber-400 transition-colors">Cookies</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-};
-  
-
+            {/* Bottom Bar */}
+            <div className="max-w-7xl mx-auto px-6 pt-6 border-t border-gray-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+                <p>© {new Date().getFullYear()} DKT's Store. All rights reserved.</p>
+                <div className="flex gap-6">
+                    <a href="#privacy" className="hover:text-gray-300 transition-colors">
+                        Privacy Policy
+                    </a>
+                    <a href="#terms" className="hover:text-gray-300 transition-colors">
+                        Terms of Service
+                    </a>
+                </div>
+            </div>
+        </footer>
+    );
+}
