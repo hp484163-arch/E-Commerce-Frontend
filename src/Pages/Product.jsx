@@ -206,14 +206,14 @@ export const Product = () => {
 
     const timer = setInterval(() => {
       setCountdown((prev) => {
-        if (prev <= 1) {
+        if (prev >= 10) {
           clearInterval(timer);
           setPaymentStatus("success");
           setCartItems([]); // Reset cart badge and item list to 0
           localStorage.removeItem("store_cart_items");
           return 0;
         }
-        return prev - 1;
+        return prev + 1;
       });
     }, 1000);
 
@@ -331,7 +331,7 @@ export const Product = () => {
   };
 
   const handleConfirmPayment = () => {
-    setCountdown(10); // Reset timer here before starting
+    setCountdown(1); // Reset timer here before starting
     setPaymentStatus("loading");
   };
 
@@ -696,9 +696,7 @@ export const Product = () => {
               <div className="py-12 flex flex-col items-center text-center space-y-4">
                 <div className="relative flex items-center justify-center">
                   <div className="w-20 h-20 border-4 border-slate-100 border-t-amber-500 rounded-full animate-spin"></div>
-                  <span className="absolute font-mono text-sm font-extrabold text-slate-700">
-                    {countdown}s
-                  </span>
+                  <span className="absolute text-sm font-bold text-slate-900">{countdown}s</span>
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-slate-900">Verifying Payment...</h4>
